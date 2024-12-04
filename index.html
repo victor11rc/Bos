@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla y Visor de Archivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mitad izquierda: Tabla -->
+        <div class="table-container">
+            <h2>Lista de Asientos</h2>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Asiento</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se generarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Mitad derecha: Visor de archivos -->
+        <div class="viewer-container">
+            <iframe id="file-viewer" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
