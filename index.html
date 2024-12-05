@@ -1,95 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selector Dinámico con JSON</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f4f4f4;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Dinámica</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Selector Dinámico con Datos Dependientes</h1>
-  <label for="selector">Selecciona una opción:</label>
-  <select id="selector">
-    <ption value="Opción 1">Opción 1</ption>
-    <option value="Opción 2">Opción 2</option>
-    <option value="Opción 3">Opción 3</option>
-  </select>
+    <div class="container">
+        <h1>Tabla Dinámica de Financiamiento</h1>
+        <div class="filters">
+            <label for="financiador">Financiador:</label>
+            <select id="financiador">
+                <option value="">Selecciona un financiador</option>
+            </select>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Selector</th>
-        <th>Dependiente</th>
-      </tr>
-    </thead>
-    <tbody id="table-body">
-      <!-- Los datos dinámicos aparecerán aquí -->
-    </tbody>
-  </table>
+            <label for="proyecto">Proyecto:</label>
+            <select id="proyecto">
+                <option value="">Selecciona un proyecto</option>
+            </select>
 
-  <script>
-    // Datos en JSON
-    const data = {
-      options: [
-        {
-          selector: "Opción 1",
-          dependents: ["Columna 1.1", "Columna 1.2"]
-        },
-        {
-          selector: "Opción 2",
-          dependents: ["Columna 2.1", "Columna 2.2", "Columna 2.3"]
-        },
-        {
-          selector: "Opción 3",
-          dependents: ["Columna 3.1"]
-        }
-      ]
-    };
+            <label for="subrubro">Subrubro Presupuestario:</label>
+            <select id="subrubro">
+                <option value="">Selecciona un subrubro</option>
+            </select>
+        </div>
 
-    // Seleccionar elementos HTML
-    const selector = document.getElementById("selector");
-    const tableBody = document.getElementById("table-body");
-
-    // Escuchar cambios en el selector
-    selector.addEventListener("change", (event) => {
-      const selectedValue = event.target.value;
-
-      // Encontrar datos dependientes en el JSON
-      const selectedData = data.options.find(option => option.selector === selectedValue);
-
-      // Limpiar la tabla antes de actualizarla
-      tableBody.innerHTML = "";
-
-      // Actualizar la tabla con los datos dependientes
-      if (selectedData) {
-        selectedData.dependents.forEach(dependent => {
-          const row = `
-            <tr>
-              <td>${selectedValue}</td>
-              <td>${dependent}</td>
-            </tr>
-          `;
-          tableBody.innerHTML += row;
-        });
-      }
-    });
-
-    // Inicializar con la primera opción seleccionada
-    selector.dispatchEvent(new Event("change"));
-  </script>
+        <table id="tabla-dinamica">
+            <thead>
+                <tr>
+                    <th>Financiador</th>
+                    <th>Subrubro Presupuestario</th>
+                    <th>Total (Debe)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos se generan dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
